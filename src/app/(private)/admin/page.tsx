@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { ArticleForm } from "@/components/forms/article-form";
-import { getPublishedArticles, readableDate } from "@/lib/articles";
+import { ArticleEditCard } from "@/components/forms/article-edit-card";
+import { getAllArticles } from "@/lib/articles";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { logoutAction } from "./actions";
 
 export default async function AdminDashboard() {
-  const supabase = createSupabaseServerClient();
+  const supabase = await createSupabaseServerClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
@@ -15,7 +16,7 @@ export default async function AdminDashboard() {
     redirect("/admin/login");
   }
 
-  const articles = await getPublishedArticles();
+  const articles = await getAllArticles();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-ink via-petrol to-burgundy p-6 text-bone">
@@ -42,20 +43,23 @@ export default async function AdminDashboard() {
         </section>
 
         <section className="mt-10">
-          <div className="flex items-center justify-between">
-            <h2 className="font-display text-2xl">Artículos publicados</h2>
+          <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+            <div>
+              <h2 className="font-display text-2xl">Gestiona tus artículos</h2>
+              <p className="text-sm text-slate">Edita o elimina publicaciones sin salir de esta pantalla.</p>
+            </div>
             <Link href="/blog" className="text-sm uppercase tracking-[0.3em] text-burgundy">
               Ver blog →
             </Link>
           </div>
-          <div className="mt-4 space-y-3">
-            {articles.map((article) => (
-              <div key={article.id} className="rounded-2xl border border-black/10 bg-white/80 p-4">
-                <p className="text-xs uppercase tracking-[0.3em] text-muted-ink">{readableDate(article)}</p>
-                <p className="font-display text-xl">{article.title}</p>
-                <p className="text-sm text-slate">{article.excerpt}</p>
-              </div>
-            ))}
+          <div className="mt-4 space-y-4">
+            {articles.length === 0 ? (
+              <p className="rounded-2xl border border-dashed border-black/20 bg-white/60 p-4 text-sm text-muted-ink">
+                Aún no hay artículos registrados. Crea el primero para verlo aquí.
+              </p>
+            ) : (
+              articles.map((article) => <ArticleEditCard key={article.id} article={article} />)
+            )}
           </div>
         </section>
       </div>

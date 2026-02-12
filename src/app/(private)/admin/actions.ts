@@ -4,13 +4,13 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { articleFormSchema } from "@/lib/schemas";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { createArticle } from "@/lib/articles";
+import { createArticle, deleteArticle, updateArticle } from "@/lib/articles";
 
 export async function loginAction(_: unknown, formData: FormData) {
   const email = formData.get("email")?.toString() ?? "";
   const password = formData.get("password")?.toString() ?? "";
 
-  const supabase = createSupabaseServerClient();
+  const supabase = await createSupabaseServerClient();
   const { error } = await supabase.auth.signInWithPassword({ email, password });
 
   if (error) {
@@ -21,7 +21,7 @@ export async function loginAction(_: unknown, formData: FormData) {
 }
 
 export async function logoutAction() {
-  const supabase = createSupabaseServerClient();
+  const supabase = await createSupabaseServerClient();
   await supabase.auth.signOut();
   redirect("/admin/login");
 }
@@ -56,5 +56,80 @@ export async function createArticleAction(_: unknown, formData: FormData) {
 
   revalidatePath("/blog");
   revalidatePath(`/blog/${slug}`);
+  revalidatePath("/admin");
   return { ok: true, slug };
+}
+
+export async function updateArticleAction(_: unknown, formData: FormData) {
+  const id = formData.get("id")?.toString() ?? "";
+  const currentSlug = formData.get("currentSlug")?.toString() ?? "";
+
+  if (!id) {
+    return { ok: false, message: "Artículo no encontrado" };
+  }
+
+  const rawValues = {
+    title: formData.get("title")?.toString() ?? "",
+    excerpt: formData.get("excerpt")?.toString() ?? "",
+    content: formData.get("content")?.toString() ?? "",
+    coverImage: formData.get("coverImage")?.toString() ?? "",
+    tags: formData.get("tags")?.toString() ?? "",
+    status: (formData.get("status")?.toString() ?? "draft") as "draft" | "published",
+  };
+
+  const parsed = articleFormSchema.safeParse(rawValues);
+
+  if (!parsed.success) {
+    return { ok: false, error: parsed.error.flatten().fieldErrors };
+  }
+
+  try {
+    const slug = await updateArticle(id, {
+      title: parsed.data.title,
+      excerpt: parsed.data.excerpt,
+      content: parsed.data.content,
+      coverImage: parsed.data.coverImage,
+      tags: parsed.data.tags
+        ?.split(",")
+        .map((tag) => tag.trim())
+        .filter(Boolean),
+      status: parsed.data.status,
+    });
+
+    revalidatePath("/blog");
+    if (currentSlug) {
+      revalidatePath(`/blog/${currentSlug}`);
+    }
+    revalidatePath(`/blog/${slug}`);
+    revalidatePath("/admin");
+
+    return { ok: true, slug };
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "No se pudo actualizar";
+    return { ok: false, message };
+  }
+}
+
+export async function deleteArticleAction(_: unknown, formData: FormData) {
+  const id = formData.get("id")?.toString() ?? "";
+  const slug = formData.get("slug")?.toString() ?? "";
+
+  if (!id) {
+    return { ok: false, message: "Artículo no encontrado" };
+  }
+
+  try {
+    await deleteArticle(id);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "No se pudo eliminar";
+    return { ok: false, message };
+  }
+
+  revalidatePath("/blog");
+  if (slug) {
+    revalidatePath(`/blog/${slug}`);
+  }
+  revalidatePath("/admin");
+
+  return { ok: true };
 }

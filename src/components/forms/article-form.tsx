@@ -1,12 +1,13 @@
 "use client";
 
-import { useFormState, useFormStatus } from "react-dom";
+import { useActionState } from "react";
+import { useFormStatus } from "react-dom";
 import { createArticleAction } from "@/app/(private)/admin/actions";
 
 const initialState = { ok: false, slug: "", error: null as Record<string, string[] | string> | null };
 
 export function ArticleForm() {
-  const [state, formAction] = useFormState(createArticleAction, initialState);
+  const [state, formAction] = useActionState(createArticleAction, initialState);
 
   return (
     <form action={formAction} className="space-y-4">

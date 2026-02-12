@@ -1,20 +1,13 @@
-import { cache } from "react";
+import "server-only";
+
 import { createClient } from "@supabase/supabase-js";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { formatSpanishDate, slugify } from "@/lib/utils";
+import { slugify } from "@/lib/utils";
+import type { ArticleRecord } from "@/lib/articles/shared";
+import { readableDate } from "@/lib/articles/shared";
 
-export type ArticleRecord = {
-  id: string;
-  title: string;
-  slug: string;
-  excerpt: string;
-  content: string;
-  cover_image: string;
-  tags?: string[];
-  status: "draft" | "published";
-  created_at: string;
-};
+export { readableDate };
 
 const fallbackArticles: ArticleRecord[] = [
   {
@@ -58,7 +51,7 @@ function getSupabasePublicClient() {
   });
 }
 
-export const getPublishedArticles = cache(async () => {
+export async function getPublishedArticles() {
   const supabase = getSupabasePublicClient();
 
   if (!supabase) {
@@ -82,9 +75,9 @@ export const getPublishedArticles = cache(async () => {
     console.warn("Supabase fallback", error);
     return fallbackArticles;
   }
-});
+}
 
-export const getArticleBySlug = cache(async (slug: string) => {
+export async function getArticleBySlug(slug: string) {
   const supabase = getSupabasePublicClient();
 
   if (!supabase) {
@@ -107,7 +100,28 @@ export const getArticleBySlug = cache(async (slug: string) => {
     console.warn("Supabase fallback", error);
     return null;
   }
-});
+}
+
+export async function getAllArticles() {
+  const admin = createSupabaseAdminClient();
+
+  try {
+    const { data, error } = await admin
+      .from("articles")
+      .select("id, title, slug, excerpt, content, cover_image, tags, status, created_at")
+      .order("created_at", { ascending: false });
+
+    if (error || !data) {
+      console.warn("Supabase admin error", error?.message);
+      return [] as ArticleRecord[];
+    }
+
+    return data as ArticleRecord[];
+  } catch (error) {
+    console.warn("Supabase admin fallback", error);
+    return [] as ArticleRecord[];
+  }
+}
 
 export async function createArticle(values: {
   title: string;
@@ -117,7 +131,7 @@ export async function createArticle(values: {
   tags?: string[];
   status: "draft" | "published";
 }) {
-  const supabase = createSupabaseServerClient();
+  const supabase = await createSupabaseServerClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
@@ -148,6 +162,61 @@ export async function createArticle(values: {
   return payload.slug;
 }
 
-export function readableDate(record: ArticleRecord) {
-  return formatSpanishDate(record.created_at);
+export async function updateArticle(
+  id: string,
+  values: {
+    title: string;
+    excerpt: string;
+    content: string;
+    coverImage: string;
+    tags?: string[];
+    status: "draft" | "published";
+  }
+) {
+  const supabase = await createSupabaseServerClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    throw new Error("Debes iniciar sesión para editar artículos");
+  }
+
+  const admin = createSupabaseAdminClient();
+
+  const payload = {
+    title: values.title,
+    slug: slugify(values.title),
+    excerpt: values.excerpt,
+    content: values.content,
+    cover_image: values.coverImage,
+    tags: values.tags ?? [],
+    status: values.status,
+  };
+
+  const { error } = await admin.from("articles").update(payload).eq("id", id);
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return payload.slug;
+}
+
+export async function deleteArticle(id: string) {
+  const supabase = await createSupabaseServerClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    throw new Error("Debes iniciar sesión para eliminar artículos");
+  }
+
+  const admin = createSupabaseAdminClient();
+  const { error } = await admin.from("articles").delete().eq("id", id);
+
+  if (error) {
+    throw new Error(error.message);
+  }
 }

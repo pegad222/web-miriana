@@ -1,12 +1,13 @@
 "use client";
 
-import { useFormState, useFormStatus } from "react-dom";
+import { useActionState } from "react";
+import { useFormStatus } from "react-dom";
 import { submitContact } from "@/app/(site)/contacto/actions";
 
 const initialState = { ok: false, error: null as Record<string, string[] | string> | null };
 
 export function ContactForm() {
-  const [state, formAction] = useFormState(submitContact, initialState);
+  const [state, formAction] = useActionState(submitContact, initialState);
 
   return (
     <form action={formAction} className="space-y-4">
