@@ -2,6 +2,5 @@
   "version": 2,
   "framework": "nextjs",
   "buildCommand": "next build",
-  "devCommand": "next dev",
-  "nodeVersion": "20.x"
+  "devCommand": "next dev"
 }
