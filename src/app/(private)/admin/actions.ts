@@ -6,7 +6,24 @@ import { articleFormSchema } from "@/lib/schemas";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { createArticle, deleteArticle, updateArticle } from "@/lib/articles";
 
-export async function loginAction(_: unknown, formData: FormData) {
+export type AuthActionState = {
+  ok: boolean;
+  message?: string;
+};
+
+export type ArticleMutationState = {
+  ok: boolean;
+  slug?: string;
+  error?: Record<string, string[] | string> | null;
+  message?: string;
+};
+
+export type ArticleDeletionState = {
+  ok: boolean;
+  message?: string;
+};
+
+export async function loginAction(_: AuthActionState, formData: FormData): Promise<AuthActionState> {
   const email = formData.get("email")?.toString() ?? "";
   const password = formData.get("password")?.toString() ?? "";
 
@@ -26,7 +43,7 @@ export async function logoutAction() {
   redirect("/admin/login");
 }
 
-export async function createArticleAction(_: unknown, formData: FormData) {
+export async function createArticleAction(_: ArticleMutationState, formData: FormData): Promise<ArticleMutationState> {
   const rawValues = {
     title: formData.get("title")?.toString() ?? "",
     excerpt: formData.get("excerpt")?.toString() ?? "",
@@ -60,7 +77,7 @@ export async function createArticleAction(_: unknown, formData: FormData) {
   return { ok: true, slug };
 }
 
-export async function updateArticleAction(_: unknown, formData: FormData) {
+export async function updateArticleAction(_: ArticleMutationState, formData: FormData): Promise<ArticleMutationState> {
   const id = formData.get("id")?.toString() ?? "";
   const currentSlug = formData.get("currentSlug")?.toString() ?? "";
 
@@ -110,7 +127,10 @@ export async function updateArticleAction(_: unknown, formData: FormData) {
   }
 }
 
-export async function deleteArticleAction(_: unknown, formData: FormData) {
+export async function deleteArticleAction(
+  _: ArticleDeletionState,
+  formData: FormData,
+): Promise<ArticleDeletionState> {
   const id = formData.get("id")?.toString() ?? "";
   const slug = formData.get("slug")?.toString() ?? "";
 

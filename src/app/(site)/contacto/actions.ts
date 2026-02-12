@@ -4,7 +4,12 @@ import { revalidatePath } from "next/cache";
 import { contactFormSchema } from "@/lib/schemas";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 
-export async function submitContact(_: unknown, formData: FormData) {
+export type ContactFormState = {
+  ok: boolean;
+  error?: Record<string, string[] | string> | null;
+};
+
+export async function submitContact(_: ContactFormState, formData: FormData): Promise<ContactFormState> {
   const result = contactFormSchema.safeParse({
     fullName: formData.get("fullName")?.toString() ?? "",
     email: formData.get("email")?.toString() ?? "",
