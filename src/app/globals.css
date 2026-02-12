@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #f4f1eb;
+  --color-panel: #fffdf8;
+  --color-ink: #111111;
+  --color-muted: #4e4e4a;
+  --color-accent: #a86a4c;
+  --color-accent-strong: #5c1f2d;
+  --grid-size: 120px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at 20% 20%, rgba(88, 122, 113, 0.08), transparent 45%),
+    radial-gradient(circle at 80% 0, rgba(92, 31, 45, 0.15), transparent 50%),
+    var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body, "Inter"), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(92, 31, 45, 0.85);
+  color: #fdfaf5;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.page-surface {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 1.75rem;
+  box-shadow: 0 25px 70px rgba(15, 23, 42, 0.18);
+  position: relative;
+  overflow: hidden;
+}
+
+.page-surface::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(15, 23, 42, 0.08), transparent 0);
+  background-size: 80px 80px;
+  mask-image: linear-gradient(180deg, rgba(255, 255, 255, 0.45), transparent 60%);
+  pointer-events: none;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(24, 55, 65, 0.12);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.18);
+}
+
+.noise-bg {
+  position: relative;
+  isolation: isolate;
+}
+
+.noise-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='224' height='224' viewBox='0 0 224 224'%3E%3Crect width='100%25' height='100%25' fill='none'/%3E%3Cg fill='%23d9d0c2' fill-opacity='0.35'%3E%3Ccircle cx='12' cy='12' r='1'/%3E%3Ccircle cx='52' cy='28' r='1'/%3E%3Ccircle cx='112' cy='18' r='1'/%3E%3Ccircle cx='172' cy='44' r='1'/%3E%3Ccircle cx='212' cy='16' r='1'/%3E%3Ccircle cx='36' cy='124' r='1'/%3E%3Ccircle cx='96' cy='84' r='1'/%3E%3Ccircle cx='144' cy='120' r='1'/%3E%3Ccircle cx='208' cy='108' r='1'/%3E%3Ccircle cx='24' cy='192' r='1'/%3E%3Ccircle cx='84' cy='176' r='1'/%3E%3Ccircle cx='172' cy='212' r='1'/%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.6;
+  z-index: -1;
+  mix-blend-mode: multiply;
+}
