@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { ArrowUpRight, Menu, X, Feather } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import { navLinks } from "@/content/navigation";
 import { cn } from "@/lib/utils";
 
@@ -14,11 +14,8 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-black/5 bg-[rgba(244,241,235,0.85)] backdrop-blur-xl">
       <div className="container flex h-18 items-center justify-between py-4">
-        <Link href="/" className="flex items-center gap-3 text-left">
-          <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-white text-burgundy shadow-sm">
-            <Feather size={20} strokeWidth={1.5} />
-          </span>
-          <span className="font-display text-2xl leading-none tracking-tight">Miriana Petrović</span>
+        <Link href="/" className="text-left">
+          <span className="font-display text-2xl leading-none tracking-tight text-ink">Miriana Petrović</span>
         </Link>
         <nav className="hidden items-center gap-8 md:flex">
           {navLinks.map((item) => (

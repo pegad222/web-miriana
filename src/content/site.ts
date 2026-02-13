@@ -1,6 +1,7 @@
 export const heroContent = {
   kicker: "Intervención jurídica estratégica",
-  title: "Conflictos familiares y laborales con orden, no con fuego cruzado",
+  title: "Resolución de conflictos familiares y laborales que necesitan orden, no más tensión",
+  brandLine: "Miriana Petrović – Abogada de conflictos",
   subtitle:
     "Integro análisis jurídico + comprensión sistémica para que cada decisión sostenga a las personas, la empresa y el futuro del conflicto.",
   primaryCta: { label: "Reservar Sesión Estratégica Inicial", href: "/sesion-estrategica" },
@@ -61,7 +62,7 @@ export const methodSteps = [
 export const services = [
   {
     category: "Conflictos familiares",
-    color: "from-burgundy/90 to-ink",
+    color: "from-[#fde5dc] via-[#fff6f0] to-white",
     items: [
       "Convenios reguladores",
       "Custodia de menores",
@@ -72,7 +73,7 @@ export const services = [
   },
   {
     category: "Conflictos laborales",
-    color: "from-petrol to-forest",
+    color: "from-[#dfe9ff] via-[#f4f8ff] to-white",
     items: [
       "Despidos y compensaciones",
       "Negociación laboral",

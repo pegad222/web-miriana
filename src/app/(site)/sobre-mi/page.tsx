@@ -9,10 +9,10 @@ export const metadata: Metadata = {
 };
 
 const highlights = [
-  "Derecho laboral y familiar",
-  "Coaching jurídico",
-  "Constelaciones familiares aplicadas",
-  "Litigación estratégica",
+  "Técnica jurídica rigurosa",
+  "Experiencia real en negociación",
+  "Litigación estratégica cuando es necesaria",
+  "Comprensión sistémica del conflicto",
 ];
 
 export default function SobreMiPage() {
@@ -21,10 +21,16 @@ export default function SobreMiPage() {
       <section className="grid gap-8 md:grid-cols-[1.1fr_0.9fr]">
         <div className="rounded-[32px] bg-white/85 p-10 shadow-elevation">
           <p className="text-xs uppercase tracking-[0.4em] text-muted-ink">Sobre mí</p>
-          <h1 className="mt-3 font-display text-5xl">Trabajo con personas que desean resolver, no destruir.</h1>
-          <p className="mt-4 text-lg text-muted-ink">
-            Soy abogada desde hace más de 20 años. Mi práctica integra la técnica jurídica, la negociación compleja y la comprensión sistémica de cada conflicto. He acompañado a familias, directivos y comités ejecutivos en decisiones críticas donde el orden y la responsabilidad marcan la diferencia.
-          </p>
+          <h1 className="mt-3 font-display text-5xl">Trabajo con personas que desean resolver el conflicto con claridad y responsabilidad.</h1>
+          <div className="mt-4 space-y-4 text-lg text-muted-ink">
+            <p>
+              Soy abogada con más de veinte años de experiencia en derecho laboral y negociación compleja. A lo largo de mi trayectoria he intervenido en procesos de alta tensión: despidos estratégicos, reestructuraciones empresariales, conflictos entre dirección y trabajadores, y decisiones críticas donde la estrategia jurídica debía ir acompañada de visión, firmeza y equilibrio.
+            </p>
+            <p>
+              Con el tiempo amplié mi especialización hacia el ámbito familiar, aplicando esa misma capacidad de análisis y negociación a separaciones, convenios reguladores y conflictos relacionados con custodia de menores.
+            </p>
+            <p>Mi práctica integra:</p>
+          </div>
           <ul className="mt-6 grid gap-3 text-sm text-slate sm:grid-cols-2">
             {highlights.map((item) => (
               <li key={item} className="flex items-center gap-2">
@@ -33,6 +39,18 @@ export default function SobreMiPage() {
               </li>
             ))}
           </ul>
+          <div className="mt-6 space-y-4 text-base text-muted-ink">
+            <p>
+              El enfoque sistémico no sustituye al derecho. Lo complementa. Permite comprender qué sostiene el conflicto para intervenir con mayor precisión y evitar escaladas innecesarias.
+            </p>
+            <p>
+              Intervengo tanto en procesos negociados como en procedimientos judiciales ya iniciados. Si es necesario litigar, se litiga. Pero siempre con una estrategia orientada a ordenar, no a confrontar.
+            </p>
+            <p>
+              Conozco estos procesos también desde la experiencia directa. Haber atravesado personalmente un proceso de separación me ha permitido comprender desde dentro la complejidad jurídica y emocional que implica. Esta vivencia refuerza mi convicción de que el conflicto no debe gestionarse únicamente desde la técnica legal, sino también desde la claridad, el orden y la responsabilidad personal.
+            </p>
+            <p className="text-lg font-semibold text-ink">Trabajo con personas que desean resolver, no destruir.</p>
+          </div>
         </div>
         <div className="space-y-6">
           <Image

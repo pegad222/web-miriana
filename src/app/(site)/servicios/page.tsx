@@ -41,13 +41,13 @@ export default function ServiciosPage() {
         {services.map((service) => (
           <article
             key={service.category}
-            className={`rounded-[32px] bg-gradient-to-br ${service.color} p-8 text-bone shadow-elevation`}
+            className={`rounded-[32px] bg-gradient-to-br ${service.color} p-8 text-ink shadow-elevation`}
           >
             <h2 className="font-display text-3xl">{service.category}</h2>
-            <ul className="mt-6 space-y-3 text-sand/80">
+            <ul className="mt-6 space-y-3 text-muted-ink">
               {service.items.map((item) => (
                 <li key={item} className="flex items-center gap-3">
-                  <span className="h-1.5 w-6 rounded-full bg-sand/70" />
+                  <span className="h-1.5 w-6 rounded-full bg-burgundy/40" />
                   {item}
                 </li>
               ))}

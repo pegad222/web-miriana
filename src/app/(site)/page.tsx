@@ -12,6 +12,9 @@ export default async function HomePage() {
         <div className="grid gap-10 md:grid-cols-[1.1fr_0.9fr] md:items-center">
           <div>
             <p className="text-xs uppercase tracking-[0.4em] text-muted-ink">{heroContent.kicker}</p>
+            <p className="mt-2 text-sm font-semibold uppercase tracking-[0.4em] text-burgundy">
+              {heroContent.brandLine}
+            </p>
             <h1 className="mt-4 font-display text-5xl leading-tight text-ink sm:text-6xl">
               {heroContent.title}
             </h1>
@@ -106,13 +109,13 @@ export default async function HomePage() {
           {services.map((service) => (
             <div
               key={service.category}
-              className={`rounded-[32px] bg-gradient-to-br ${service.color} p-8 text-bone shadow-elevation`}
+              className={`rounded-[32px] bg-gradient-to-br ${service.color} p-8 text-ink shadow-elevation`}
             >
               <h3 className="font-display text-3xl">{service.category}</h3>
-              <ul className="mt-6 space-y-3 text-sand/80">
+              <ul className="mt-6 space-y-3 text-muted-ink">
                 {service.items.map((item) => (
                   <li key={item} className="flex items-center gap-3">
-                    <span className="h-1.5 w-1.5 rounded-full bg-sand" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-burgundy/60" />
                     {item}
                   </li>
                 ))}

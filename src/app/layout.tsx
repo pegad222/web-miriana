@@ -21,18 +21,20 @@ export const metadata: Metadata = {
     template: "%s | Miriana",
   },
   description:
-    "Intervención jurídica estratégica y premium para conflictos familiares y laborales complejos. Orden, análisis sistémico y litigación solo cuando aporta valor.",
+    "Intervención jurídica estratégica y premium para conflictos familiares y laborales complejos. Abogada de familia en Madrid y abogada de derecho laboral en Madrid con orden, análisis sistémico y litigación solo cuando aporta valor.",
   keywords: [
     "abogada sistémica",
     "conflictos familiares",
     "conflictos laborales",
     "resolución estratégica",
     "sesión estratégica inicial",
+    "abogada de familia madrid",
+    "abogada derecho laboral madrid",
   ],
   openGraph: {
     title: "Miriana · Intervención Jurídica Estratégica",
     description:
-      "Resolución estratégica de conflictos familiares y laborales con enfoque sistémico y 20+ años de experiencia.",
+      "Resolución estratégica de conflictos familiares y laborales con enfoque sistémico y 20+ años de experiencia. Abogada de familia en Madrid y abogada de derecho laboral en Madrid.",
     url: baseUrl,
     siteName: "Miriana",
     locale: "es_ES",
@@ -50,7 +52,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Miriana · Intervención Jurídica Estratégica",
     description:
-      "Orden, estrategia y acompañamiento jurídico sistémico para conflictos familiares y laborales.",
+      "Orden, estrategia y acompañamiento jurídico sistémico para conflictos familiares y laborales. Abogada de familia en Madrid y abogada de derecho laboral en Madrid.",
     images: [`${baseUrl}/og-image.jpg`],
   },
   alternates: {
