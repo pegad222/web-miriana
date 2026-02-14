@@ -31,7 +31,10 @@ export default function ServiciosPage() {
     <div className="space-y-12">
       <header className="rounded-[32px] bg-white/80 p-10 shadow-elevation">
         <p className="text-xs uppercase tracking-[0.4em] text-muted-ink">Servicios</p>
-        <h1 className="mt-3 font-display text-5xl">Especialización + estrategia aplicada</h1>
+        <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl">
+          <span className="block sm:inline">Especialización +</span>{" "}
+          <span className="block sm:inline">estrategia aplicada</span>
+        </h1>
         <p className="mt-4 max-w-3xl text-lg text-muted-ink">
           Diseño intervenciones a medida para familias, profesionales, directivos y empresas que desean resolver con responsabilidad. Cada servicio incluye investigación jurídica, análisis sistémico y hoja de ruta con hitos claros.
         </p>
