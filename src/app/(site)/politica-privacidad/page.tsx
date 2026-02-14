@@ -23,7 +23,7 @@ const sections = [
   },
   {
     title: "Derechos",
-    body: "Puedes ejercer derechos de acceso, rectificación, supresión, oposición y limitación escribiendo a agenda@miriana.com.",
+    body: "Puedes ejercer derechos de acceso, rectificación, supresión, oposición y limitación escribiendo a info@mirianapetrovic.com.",
   },
 ];
 

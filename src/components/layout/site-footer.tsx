@@ -30,9 +30,9 @@ export function SiteFooter() {
         <div>
           <p className="text-xs uppercase tracking-[0.3em] text-sand/60">Contacto</p>
           <p className="mt-4 text-sm text-sand/80">
-            Email: <a href="mailto:agenda@miriana.com" className="underline">agenda@miriana.com</a>
+            Email: <a href="mailto:info@mirianapetrovic.com" className="underline">info@mirianapetrovic.com</a>
             <br />
-            Teléfono: <a href="tel:+34111222333" className="underline">+34 111 222 333</a>
+            Teléfono: <a href="tel:+34617716666" className="underline">+34 617 716 666</a>
           </p>
           <div className="mt-6 flex flex-wrap gap-4 text-xs text-sand/60">
             {legalLinks.map((item) => (

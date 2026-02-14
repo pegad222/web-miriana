@@ -28,9 +28,9 @@ export default function ContactPage() {
           <li>3. Tras la sesión, recibirás propuesta de intervención.</li>
         </ul>
         <div className="mt-8 text-sm text-muted-ink">
-          Email: <a href="mailto:agenda@miriana.com" className="underline">agenda@miriana.com</a>
+          Email: <a href="mailto:info@mirianapetrovic.com" className="underline">info@mirianapetrovic.com</a>
           <br />
-          Teléfono: <a href="tel:+34111222333" className="underline">+34 111 222 333</a>
+          Teléfono: <a href="tel:+34617716666" className="underline">+34 617 716 666</a>
         </div>
       </aside>
     </div>
