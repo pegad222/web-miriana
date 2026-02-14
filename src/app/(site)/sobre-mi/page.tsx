@@ -19,9 +19,11 @@ export default function SobreMiPage() {
   return (
     <div className="space-y-10">
       <section className="grid gap-8 md:grid-cols-[1.1fr_0.9fr]">
-        <div className="rounded-[32px] bg-white/85 p-10 shadow-elevation">
+        <div className="rounded-[32px] bg-white/85 p-8 shadow-elevation sm:p-10">
           <p className="text-xs uppercase tracking-[0.4em] text-muted-ink">Sobre mí</p>
-          <h1 className="mt-3 font-display text-5xl">Trabajo con personas que desean resolver el conflicto con claridad y responsabilidad.</h1>
+          <h1 className="mt-3 font-display text-4xl leading-snug sm:text-5xl">
+            Trabajo con personas que desean resolver el conflicto con claridad y responsabilidad.
+          </h1>
           <div className="mt-4 space-y-4 text-lg text-muted-ink">
             <p>
               Soy abogada con más de veinte años de experiencia en derecho laboral y negociación compleja. A lo largo de mi trayectoria he intervenido en procesos de alta tensión: despidos estratégicos, reestructuraciones empresariales, conflictos entre dirección y trabajadores, y decisiones críticas donde la estrategia jurídica debía ir acompañada de visión, firmeza y equilibrio.
@@ -58,9 +60,9 @@ export default function SobreMiPage() {
             alt="Retrato de Miriana"
             width={640}
             height={820}
-            className="rounded-[32px] object-cover shadow-elevation"
+            className="w-full rounded-[32px] object-cover shadow-elevation"
           />
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
             {aboutStats.map((stat) => (
               <div key={stat.label} className="rounded-2xl border border-black/10 bg-white/70 p-4 text-center">
                 <p className="font-display text-3xl">{stat.value}</p>
