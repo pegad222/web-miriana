@@ -14,80 +14,70 @@ export const heroContent = {
 };
 
 export const problemPoints = [
-  {
-    title: "Escalada del conflicto",
-    description:
-      "Cuando nadie conduce la conversación, el conflicto muta en batalla judicial. Acompaño para que cada paso se sostenga en estrategia.",
-  },
-  {
-    title: "Coste emocional",
-    description:
-      "Ordenar la dinámica relacional reduce el desgaste y permite tomar decisiones con foco en el largo plazo.",
-  },
-  {
-    title: "Coste económico",
-    description:
-      "Diseño rutas de negociación y litigación eficiente para evitar gastos innecesarios.",
-  },
-  {
-    title: "Judicialización",
-    description:
-      "Litigo cuando aporta valor. Antes, construyo acuerdos y escenarios para que la vía judicial sea la última opción.",
-  },
+  "Se negocia sin comprender las posiciones reales.",
+  "Se polarizan equipos o familias.",
+  "Se repiten patrones que ya han fracasado.",
+  "Se toman decisiones reactivas que agravan el escenario.",
+  "Se invierten recursos sin resolver el núcleo del problema.",
 ];
 
 export const methodSteps = [
   {
-    title: "Análisis jurídico claro",
-    description: "Evaluación técnica realista de posiciones, riesgos y ventanas de oportunidad.",
-    badge: "Paso 1",
+    title: "Diagnóstico estratégico",
+    description: "Qué está ocurriendo realmente y qué lo sostiene.",
+    badge: "Fase 1",
   },
   {
-    title: "Núcleo del conflicto",
-    description: "Identifico la dinámica sistémica y relacional que alimenta la escalada.",
-    badge: "Paso 2",
+    title: "Mapa sistémico del conflicto",
+    description: "Dinámicas, roles y bloqueos invisibles en juego.",
+    badge: "Fase 2",
   },
   {
-    title: "Estrategia de intervención",
-    description: "Defino negociaciones, acuerdos o preparación procesal con foco en impacto.",
-    badge: "Paso 3",
+    title: "Diseño de estrategia jurídica",
+    description: "Negociación, acuerdo o procedimiento con dirección clara.",
+    badge: "Fase 3",
   },
   {
-    title: "Resolución con orden",
-    description: "Acompaño la ejecución para que los acuerdos se sostengan en el tiempo.",
-    badge: "Paso 4",
+    title: "Ejecución coordinada",
+    description: "Intervención propia o en red cuando el caso lo requiere.",
+    badge: "Fase 4",
   },
 ];
 
 export const services = [
   {
-    category: "Conflictos familiares",
+    category: "Conflictos empresariales y laborales",
     color: "from-[#fde5dc] via-[#fff6f0] to-white",
+    description:
+      "En el ámbito empresarial, los conflictos rara vez son solo jurídicos. Suelen implicar dinámicas internas, posiciones enfrentadas y decisiones que afectan al equilibrio de la organización.",
     items: [
-      "Convenios reguladores",
-      "Custodia de menores",
-      "Modificación de medidas",
-      "Procesos judicializados",
-      "Acompañamiento individual en rupturas",
+      "Conflictos societarios",
+      "Tensiones entre socios",
+      "Escaladas laborales",
+      "Bloqueos en equipos directivos",
+      "Procesos estancados",
     ],
   },
   {
-    category: "Conflictos laborales",
+    category: "Conflictos familiares y sucesorios",
     color: "from-[#dfe9ff] via-[#f4f8ff] to-white",
+    description:
+      "En el ámbito familiar, el conflicto suele ir más allá de lo estrictamente jurídico y activa dinámicas emocionales que bloquean las decisiones.",
     items: [
-      "Despidos y compensaciones",
-      "Negociación laboral",
-      "Reestructuraciones",
-      "Procedimientos judiciales",
+      "Separaciones complejas",
+      "Decisiones parentales bloqueadas",
+      "Herencias enquistadas",
+      "Conflictos entre hermanos",
+      "Procesos prolongados sin avance real",
     ],
   },
 ];
 
 export const sessionHighlights = [
-  "Evaluación jurídica honesta",
-  "Mapa de dinámica y roles",
-  "Estrategia viable y escenarios",
-  "Próximos pasos definidos",
+  "La estructura real del conflicto",
+  "Qué lo está sosteniendo",
+  "Escenarios posibles",
+  "Estrategia recomendada",
 ];
 
 export const aboutStats = [

@@ -57,34 +57,34 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-        <div className="rounded-[32px] bg-ink p-10 text-bone">
-          <p className="text-xs uppercase tracking-[0.4em] text-sand/70">Problema</p>
-          <h2 className="mt-4 font-display text-4xl">Por qué acompañarte</h2>
-          <p className="mt-4 text-sand/80">
-            El conflicto deja de ser manejable cuando nadie conduce la conversación. Ordeno la dinámica, contengo la escalada y priorizo decisiones que sostienen a las personas y al negocio.
-          </p>
-          <p className="mt-6 text-sm uppercase tracking-[0.4em] text-sand/60">Trabajo con personas que desean resolver, no destruir.</p>
+      <section className="rounded-[32px] bg-ink p-10 text-bone shadow-elevation">
+        <p className="text-xs uppercase tracking-[0.4em] text-sand/70">El problema</p>
+        <h2 className="mt-4 font-display text-4xl">¿Qué ocurre cuando solo se aborda la superficie del conflicto?</h2>
+        <div className="mt-4 space-y-4 text-sand/80">
+          <p>Cuando el análisis se limita a lo inmediato, el conflicto no desaparece.</p>
+          <p>Se desplaza o se intensifica.</p>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2">
+        <ul className="mt-6 space-y-3 text-sm text-sand">
           {problemPoints.map((point) => (
-            <div key={point.title} className="glass-card">
-              <p className="text-xs uppercase tracking-[0.3em] text-muted-ink">{point.title}</p>
-              <p className="mt-3 text-sm text-slate">{point.description}</p>
-            </div>
+            <li key={point} className="flex items-start gap-3">
+              <span className="mt-1 h-1.5 w-1.5 rounded-full bg-sand" />
+              {point}
+            </li>
           ))}
-        </div>
+        </ul>
+        <p className="mt-8 text-sm uppercase tracking-[0.4em] text-sand/70">El resultado no es solución. Es desgaste.</p>
       </section>
 
-      <section className="rounded-[32px] bg-white/85 p-10 shadow-elevation">
-        <div className="flex flex-col gap-6 border-b border-black/5 pb-8 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="text-xs uppercase tracking-[0.4em] text-muted-ink">Método</p>
-            <h2 className="mt-3 font-display text-4xl">Intervención en cuatro pasos</h2>
+      <section className="rounded-[32px] bg-white/95 p-10 shadow-elevation">
+        <div className="border-b border-black/5 pb-8">
+          <p className="text-xs uppercase tracking-[0.4em] text-muted-ink">Método ICEBERG®</p>
+          <h2 className="mt-3 font-display text-4xl">Método ICEBERG®</h2>
+          <p className="mt-2 font-display text-xl text-burgundy">Resolución estratégica de conflictos</p>
+          <div className="mt-4 space-y-4 text-muted-ink">
+            <p>El conflicto visible es solo una parte del problema.</p>
+            <p>El Método ICEBERG® permite intervenir tanto en la superficie jurídica como en la estructura que sostiene el conflicto.</p>
+            <p>Mi intervención se articula en cuatro fases:</p>
           </div>
-          <Link href="/metodo" className="text-sm font-semibold uppercase tracking-[0.3em] text-burgundy">
-            Ver detalle →
-          </Link>
         </div>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {methodSteps.map((step) => (
@@ -95,57 +95,66 @@ export default async function HomePage() {
             </div>
           ))}
         </div>
+        <p className="mt-8 text-sm font-semibold uppercase tracking-[0.3em] text-muted-ink">No se trata de ganar. Se trata de ordenar para poder resolver.</p>
       </section>
 
-      <section>
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <section className="rounded-[32px] bg-white/90 p-10 shadow-elevation">
+        <p className="text-xs uppercase tracking-[0.4em] text-muted-ink">Ámbitos de intervención</p>
+        <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-xs uppercase tracking-[0.4em] text-muted-ink">Servicios</p>
-            <h2 className="mt-2 font-display text-4xl">Conflictos familiares y laborales</h2>
+            <h2 className="font-display text-4xl">Aplicación del Método ICEBERG®</h2>
+            <p className="mt-2 text-lg text-muted-ink">Conflictos empresariales y familiares complejos.</p>
           </div>
           <Link href="/servicios" className="text-sm font-semibold uppercase tracking-[0.3em] text-burgundy">
-            Ver todos →
+            Ver detalle →
           </Link>
         </div>
         <div className="mt-8 grid gap-6 md:grid-cols-2">
           {services.map((service) => (
-            <div
+            <article
               key={service.category}
               className={`rounded-[32px] bg-gradient-to-br ${service.color} p-8 text-ink shadow-elevation`}
             >
-              <h3 className="font-display text-3xl">{service.category}</h3>
+              <p className="text-xs uppercase tracking-[0.3em] text-muted-ink">{service.category}</p>
+              <p className="mt-3 text-sm text-slate">{service.description}</p>
               <ul className="mt-6 space-y-3 text-muted-ink">
                 {service.items.map((item) => (
-                  <li key={item} className="flex items-center gap-3">
-                    <span className="h-1.5 w-1.5 rounded-full bg-burgundy/60" />
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-burgundy/60" />
                     {item}
                   </li>
                 ))}
               </ul>
-            </div>
+            </article>
           ))}
         </div>
+        <p className="mt-8 text-sm text-muted-ink">
+          También intervengo en conflictos ya dirigidos por otros profesionales cuando el proceso se encuentra bloqueado o escalando innecesariamente.
+        </p>
       </section>
 
       <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-        <div className="rounded-[32px] border border-black/5 bg-white/90 p-8 shadow-elevation">
-          <p className="text-xs uppercase tracking-[0.3em] text-muted-ink">Sesión estratégica inicial</p>
-          <h2 className="mt-3 font-display text-4xl">Puerta de entrada obligatoria</h2>
+        <div className="rounded-[32px] border border-black/5 bg-white/95 p-8 shadow-elevation">
+          <p className="text-xs uppercase tracking-[0.3em] text-muted-ink">Cómo empezar</p>
+          <h2 className="mt-3 font-display text-4xl">Sesión Estratégica Inicial</h2>
           <p className="mt-4 text-muted-ink">
-            Espacio estructurado de análisis: evaluación jurídica, dinámica del conflicto, estrategia viable y próximos pasos claros.
+            Toda intervención comienza con una aplicación concentrada del Método ICEBERG®. En esta sesión analizamos el caso antes de decidir cómo actuar.
           </p>
-          <ul className="mt-6 grid gap-4 sm:grid-cols-2">
+          <p className="mt-6 text-xs uppercase tracking-[0.4em] text-muted-ink">En esta sesión analizamos:</p>
+          <ul className="mt-4 space-y-3 text-sm text-slate">
             {sessionHighlights.map((item) => (
-              <li key={item} className="rounded-2xl border border-black/10 p-4 text-sm text-slate">
+              <li key={item} className="flex items-start gap-3">
+                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-burgundy" />
                 {item}
               </li>
             ))}
           </ul>
+          <p className="mt-6 text-lg font-semibold text-ink">Sales con claridad. Y con un plan.</p>
           <Link
             href="/sesion-estrategica"
-            className="mt-8 inline-flex items-center justify-center rounded-full bg-ink px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-bone"
+            className="mt-6 inline-flex items-center justify-center rounded-full bg-ink px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-bone"
           >
-            Reservar Sesión
+            Reservar Sesión Estratégica Inicial
           </Link>
         </div>
         <div className="rounded-[32px] bg-ink/95 p-8 text-bone">
@@ -166,23 +175,16 @@ export default async function HomePage() {
       </section>
 
       <section className="rounded-[32px] bg-gradient-to-br from-sand via-bone to-white p-10 text-center shadow-elevation">
-        <p className="text-xs uppercase tracking-[0.4em] text-muted-ink">Conflictos complejos</p>
-        <h2 className="mt-4 font-display text-4xl">Convertimos incertidumbre en planes ejecutables</h2>
-        <p className="mx-auto mt-4 max-w-2xl text-muted-ink">
-          Si tu conflicto ya está escalando, aún es posible recuperar el orden. El primer paso es entender qué lo alimenta y qué camino aporta valor.
-        </p>
+        <p className="text-xs uppercase tracking-[0.4em] text-muted-ink">Cierre</p>
+        <h2 className="mt-4 font-display text-4xl">Si el conflicto se repite o escala, no necesitas más desgaste.</h2>
+        <p className="mt-4 text-lg text-muted-ink">Necesitas claridad.</p>
+        <p className="mx-auto mt-4 max-w-2xl text-muted-ink">Solicita tu Sesión Estratégica Inicial.</p>
         <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <Link
-            href="/contacto"
-            className="rounded-full border border-ink px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-ink"
-          >
-            Formulario de preselección
-          </Link>
           <Link
             href="/sesion-estrategica"
             className="rounded-full bg-burgundy px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-bone"
           >
-            AGENDA Sesión Inicial
+            Reservar Sesión Estratégica Inicial
           </Link>
         </div>
       </section>

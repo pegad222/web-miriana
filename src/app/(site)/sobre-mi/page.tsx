@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { aboutStats } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -9,10 +10,9 @@ export const metadata: Metadata = {
 };
 
 const highlights = [
-  "Técnica jurídica rigurosa",
-  "Experiencia real en negociación",
-  "Litigación estratégica cuando es necesaria",
-  "Comprensión sistémica del conflicto",
+  "Estrategia jurídica sólida",
+  "Análisis estructural del conflicto",
+  "Dirección clara de intervención",
 ];
 
 export default function SobreMiPage() {
@@ -22,16 +22,22 @@ export default function SobreMiPage() {
         <div className="rounded-[32px] bg-white/85 p-8 shadow-elevation sm:p-10">
           <p className="text-xs uppercase tracking-[0.4em] text-muted-ink">Sobre mí</p>
           <h1 className="mt-3 font-display text-4xl leading-snug sm:text-5xl">
-            Trabajo con personas que desean resolver el conflicto con claridad y responsabilidad.
+            No siempre resolvemos los conflictos porque no siempre los estamos entendiendo.
           </h1>
           <div className="mt-4 space-y-4 text-lg text-muted-ink">
             <p>
-              Soy abogada con más de veinte años de experiencia en derecho laboral y negociación compleja. A lo largo de mi trayectoria he intervenido en procesos de alta tensión: despidos estratégicos, reestructuraciones empresariales, conflictos entre dirección y trabajadores, y decisiones críticas donde la estrategia jurídica debía ir acompañada de visión, firmeza y equilibrio.
+              Soy abogada y llevo más de veinte años trabajando en negociación y estrategia jurídica, principalmente en el ámbito empresarial. He intervenido en conflictos complejos, escenarios de alta tensión y procesos donde una mala decisión podía escalar rápidamente la situación.
             </p>
             <p>
-              Con el tiempo amplié mi especialización hacia el ámbito familiar, aplicando esa misma capacidad de análisis y negociación a separaciones, convenios reguladores y conflictos relacionados con custodia de menores.
+              El derecho me dio estructura. La experiencia me dio criterio. Con el tiempo entendí algo fundamental: el derecho es imprescindible, pero por sí solo casi nunca resuelve.
             </p>
-            <p>Mi práctica integra:</p>
+            <p>
+              Muchos conflictos no se bloquean por falta de argumentos, sino porque nadie está analizando la dinámica que los sostiene. Lo he visto en empresa y también lo he vivido en el ámbito familiar.
+            </p>
+            <p>
+              Cuando el conflicto no se interviene en profundidad, se repite. Se desplaza. Se intensifica. Esa comprensión cambió mi forma de trabajar. No abandoné el derecho. Lo amplié. Así nació el Método ICEBERG®.
+            </p>
+            <p>Hoy intervengo en conflictos empresariales y familiares complejos integrando:</p>
           </div>
           <ul className="mt-6 grid gap-3 text-sm text-slate sm:grid-cols-2">
             {highlights.map((item) => (
@@ -42,16 +48,32 @@ export default function SobreMiPage() {
             ))}
           </ul>
           <div className="mt-6 space-y-4 text-base text-muted-ink">
-            <p>
-              El enfoque sistémico no sustituye al derecho. Lo complementa. Permite comprender qué sostiene el conflicto para intervenir con mayor precisión y evitar escaladas innecesarias.
-            </p>
-            <p>
-              Intervengo tanto en procesos negociados como en procedimientos judiciales ya iniciados. Si es necesario litigar, se litiga. Pero siempre con una estrategia orientada a ordenar, no a confrontar.
-            </p>
-            <p>
-              Conozco estos procesos también desde la experiencia directa. Haber atravesado personalmente un proceso de separación me ha permitido comprender desde dentro la complejidad jurídica y emocional que implica. Esta vivencia refuerza mi convicción de que el conflicto no debe gestionarse únicamente desde la técnica legal, sino también desde la claridad, el orden y la responsabilidad personal.
-            </p>
-            <p className="text-lg font-semibold text-ink">Trabajo con personas que desean resolver, no destruir.</p>
+            <p>No trabajo para alimentar la confrontación. Trabajo para intervenir el conflicto con claridad y hacerlo resoluble.</p>
+            <p>Si buscas simplemente defender una posición, este no es tu enfoque. Si buscas intervenir estratégicamente tu conflicto, empezamos por la Sesión Estratégica Inicial.</p>
+          </div>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <Link
+              href="/sesion-estrategica"
+              className="rounded-full bg-ink px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-bone"
+            >
+              Solicitar Sesión Estratégica Inicial
+            </Link>
+            <Link
+              href="https://www.linkedin.com/in/mirianapetrovic/"
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-full border border-ink px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-ink"
+            >
+              LinkedIn
+            </Link>
+            <Link
+              href="https://www.instagram.com/mirianapetrovic/"
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-full border border-ink px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-ink"
+            >
+              Instagram
+            </Link>
           </div>
         </div>
         <div className="space-y-6">
