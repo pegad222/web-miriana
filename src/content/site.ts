@@ -1,11 +1,11 @@
 export const heroContent = {
   kicker: "Intervención jurídica estratégica",
-  title: "Resolución de conflictos familiares y laborales que necesitan orden, no más tensión",
+  title: "Cuando el conflicto se repite o escala, hay algo más que no estás viendo.",
   brandLine: "Miriana Petrović – Abogada de conflictos",
   subtitle:
-    "Integro análisis jurídico + comprensión sistémica para que cada decisión sostenga a las personas, la empresa y el futuro del conflicto.",
-  primaryCta: { label: "Reservar Sesión Estratégica Inicial", href: "/sesion-estrategica" },
-  secondaryCta: { label: "Descubrir el método", href: "/metodo" },
+    "La mayoría de los conflictos empresariales y familiares no se bloquean por falta de argumentos jurídicos, sino por dinámicas invisibles que nadie está analizando. He desarrollado el Método ICEBERG®, un modelo propio de resolución estratégica que integra base jurídica sólida y análisis sistémico profundo.",
+  primaryCta: { label: "Solicitar Sesión Estratégica Inicial", href: "/sesion-estrategica" },
+  secondaryCta: { label: "Descubrir el Método ICEBERG®", href: "/metodo" },
   proofPoints: [
     "20+ años ordenando negociaciones complejas",
     "Enfoque sistémico aplicado al derecho",

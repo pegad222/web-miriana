@@ -5,9 +5,11 @@ import { getPublishedArticles, readableDate } from "@/lib/articles";
 
 export default async function HomePage() {
   const articles = await getPublishedArticles();
+  const latestArticle = articles[0];
 
   return (
-    <div className="space-y-24">
+    <>
+      <div className="space-y-24">
       <section className="page-surface relative overflow-hidden px-6 py-12 sm:px-12">
         <div className="grid gap-10 md:grid-cols-[1.1fr_0.9fr] md:items-center">
           <div>
@@ -55,7 +57,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="grid gap-8 md:grid-cols-[0.9fr_1.1fr]">
+      <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="rounded-[32px] bg-ink p-10 text-bone">
           <p className="text-xs uppercase tracking-[0.4em] text-sand/70">Problema</p>
           <h2 className="mt-4 font-display text-4xl">Por qué acompañarte</h2>
@@ -185,5 +187,19 @@ export default async function HomePage() {
         </div>
       </section>
     </div>
+    {latestArticle && (
+      <aside className="fixed bottom-4 right-4 z-30 w-[min(90vw,280px)] rounded-[24px] border border-black/10 bg-white/95 p-4 shadow-elevation">
+        <p className="text-[0.55rem] uppercase tracking-[0.4em] text-muted-ink">Último artículo</p>
+        <p className="mt-2 font-display text-lg text-ink">{latestArticle.title}</p>
+        <p className="mt-1 text-xs text-muted-ink">{latestArticle.excerpt}</p>
+        <div className="mt-3 flex items-center justify-between text-[0.6rem] uppercase tracking-[0.3em] text-muted-ink">
+          <span>{readableDate(latestArticle)}</span>
+          <Link href={`/blog/${latestArticle.slug}`} className="rounded-full bg-ink px-3 py-1 text-bone">
+            Abrir
+          </Link>
+        </div>
+      </aside>
+    )}
+    </>
   );
 }
