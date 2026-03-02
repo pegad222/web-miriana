@@ -62,16 +62,42 @@ export default function SobreMiPage() {
               href="https://www.linkedin.com/in/mirianapetrovic/"
               target="_blank"
               rel="noreferrer"
-              className="rounded-full border border-ink px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-ink"
+              className="inline-flex items-center gap-2 rounded-full bg-[#0A66C2] px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-white shadow-elevation transition hover:bg-[#084f96]"
             >
+              <svg
+                aria-hidden="true"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="text-white"
+              >
+                <path d="M4.98 3.5a2.5 2.5 0 1 1-.02 5 2.5 2.5 0 0 1 .02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.82-2.05 3.74-2.05 4 0 4.74 2.63 4.74 6.05V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21H9z" />
+              </svg>
               LinkedIn
             </Link>
             <Link
               href="https://www.instagram.com/mirianapetrovic/"
               target="_blank"
               rel="noreferrer"
-              className="rounded-full border border-ink px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-ink"
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#F58529] via-[#DD2A7B] to-[#8134AF] px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-white shadow-elevation transition hover:opacity-90"
             >
+              <svg
+                aria-hidden="true"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-white"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <path d="M17.5 6.5h.01" />
+              </svg>
               Instagram
             </Link>
           </div>

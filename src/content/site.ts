@@ -1,7 +1,7 @@
 export const heroContent = {
-  kicker: "Intervención jurídica estratégica",
+  kicker: "Resolución estratégica de conflictos",
   title: "Cuando el conflicto se repite o escala, hay algo más que no estás viendo.",
-  brandLine: "Miriana Petrović – Abogada de conflictos",
+  brandLine: "Miriana Petrović – Abogada",
   subtitle:
     "La mayoría de los conflictos empresariales y familiares no se bloquean por falta de argumentos jurídicos, sino por dinámicas invisibles que nadie está analizando. He desarrollado el Método ICEBERG®, un modelo propio de resolución estratégica que integra base jurídica sólida y análisis sistémico profundo.",
   primaryCta: { label: "Solicitar Sesión Estratégica Inicial", href: "/sesion-estrategica" },
