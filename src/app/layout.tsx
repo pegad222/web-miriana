@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Source_Sans_3 } from "next/font/google";
+import { WhatsappPopup } from "@/components/whatsapp-popup";
 import "./globals.css";
 
 const display = Playfair_Display({
@@ -69,6 +70,7 @@ export default function RootLayout({
     <html lang="es">
       <body className={`${display.variable} ${body.variable} antialiased bg-[var(--color-bg)]`}>
         {children}
+        <WhatsappPopup />
       </body>
     </html>
   );

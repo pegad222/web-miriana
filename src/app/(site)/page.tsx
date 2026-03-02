@@ -2,11 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { heroContent, problemPoints, methodSteps, services, sessionHighlights } from "@/content/site";
 import { getPublishedArticles, readableDate } from "@/lib/articles";
-import { LatestArticlePopup } from "@/components/latest-article-popup";
 
 export default async function HomePage() {
   const articles = await getPublishedArticles();
-  const latestArticle = articles[0];
 
   return (
     <>
@@ -190,7 +188,6 @@ export default async function HomePage() {
         </div>
       </section>
     </div>
-    {latestArticle && <LatestArticlePopup article={latestArticle} />}
     </>
   );
 }
