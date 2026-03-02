@@ -95,7 +95,7 @@ Resumen: ${data.summary}`;
     await resendClient.emails.send({
       from: "Miriana Web <noreply@mirianapetrovic.com>",
       to: [NOTIFY_EMAIL],
-      reply_to: data.email,
+      replyTo: data.email,
       subject,
       html,
       text,
