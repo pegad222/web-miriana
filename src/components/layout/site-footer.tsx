@@ -12,7 +12,7 @@ export function SiteFooter() {
     <footer className="mt-16 border-t border-black/5 bg-[rgba(17,18,23,0.92)] text-bone">
       <div className="container grid gap-10 py-12 md:grid-cols-3">
         <div>
-          <p className="font-display text-2xl">Miriana</p>
+          <p className="font-display text-2xl">Miriana Petrović</p>
           <p className="mt-3 max-w-sm text-sm text-sand/80">
             Intervención jurídica estratégica con enfoque sistémico para conflictos familiares y laborales que necesitan orden, no confrontación.
           </p>
@@ -44,7 +44,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-white/10 py-4 text-center text-xs text-sand/60">
-        © {new Date().getFullYear()} Miriana · Estrategia Jurídica. Todos los derechos reservados.
+        © {new Date().getFullYear()} Miriana Petrović · Estrategia Jurídica. Todos los derechos reservados.
       </div>
     </footer>
   );
