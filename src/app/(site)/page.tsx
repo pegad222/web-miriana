@@ -74,6 +74,28 @@ export default async function HomePage() {
         <p className="mt-8 text-sm uppercase tracking-[0.4em] text-sand/70">El resultado no es solución. Es desgaste.</p>
       </section>
 
+      <section className="rounded-[28px] bg-white/90 p-8 shadow-elevation">
+        <p className="text-xs uppercase tracking-[0.4em] text-muted-ink">Contextos habituales</p>
+        <h2 className="mt-4 font-display text-4xl text-ink">Situaciones en las que suelo intervenir</h2>
+        <p className="mt-3 text-base text-muted-ink">
+          Cada uno de estos escenarios comparte un mismo patrón: el conflicto dejó de ser un incidente aislado y ya afecta a la estructura completa.
+        </p>
+        <ul className="mt-5 space-y-3 text-sm text-slate">
+          {[
+            "Conflictos entre socios o equipos directivos",
+            "Negociaciones laborales bloqueadas",
+            "Tensiones entre dirección y trabajadores",
+            "Empresas familiares en momentos críticos",
+            "Separaciones con alto nivel de conflicto",
+          ].map((item) => (
+            <li key={item} className="flex items-start gap-3 rounded-2xl border border-black/5 bg-white/80 px-4 py-3">
+              <span className="mt-1 h-1.5 w-1.5 rounded-full bg-burgundy" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
       <section className="rounded-[32px] bg-white/95 p-10 shadow-elevation">
         <div className="border-b border-black/5 pb-8">
           <p className="text-xs uppercase tracking-[0.4em] text-muted-ink">Método ICEBERG®</p>
