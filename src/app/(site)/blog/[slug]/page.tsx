@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { getArticleBySlug, readableDate } from "@/lib/articles";
 
 type BlogPageProps = { params: Promise<{ slug: string }> };
@@ -34,8 +36,6 @@ export default async function ArticlePage({ params }: BlogPageProps) {
     notFound();
   }
 
-  const paragraphs = article.content.split(/\n+/).map((paragraph) => paragraph.trim()).filter(Boolean);
-
   return (
     <article className="space-y-10">
       <header className="space-y-4">
@@ -52,12 +52,8 @@ export default async function ArticlePage({ params }: BlogPageProps) {
           className="h-[420px] w-full object-cover"
         />
       </div>
-      <div className="prose prose-lg max-w-none text-ink">
-        {paragraphs.map((paragraph, index) => (
-          <p key={`${index}-${paragraph.slice(0, 20)}`} className="text-lg text-muted-ink">
-            {paragraph}
-          </p>
-        ))}
+      <div className="prose prose-lg max-w-none text-ink prose-strong:text-ink prose-li:marker:text-burgundy">
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>{article.content}</ReactMarkdown>
       </div>
     </article>
   );

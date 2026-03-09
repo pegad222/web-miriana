@@ -74,7 +74,10 @@ export function ArticleEditCard({ article }: { article: ArticleRecord }) {
             />
           </label>
           <label className="text-sm font-semibold text-muted-ink">
-            Contenido
+            Contenido (soporta Markdown)
+            <span className="block text-xs font-normal text-slate">
+              Usa **negritas**, listas (- , 1.) y saltos de línea para secciones.
+            </span>
             <textarea
               name="content"
               defaultValue={article.content}
