@@ -80,3 +80,18 @@ a {
   z-index: -1;
   mix-blend-mode: multiply;
 }
+
+.blog-content p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.blog-content ul,
+.blog-content ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.blog-content li {
+  margin-bottom: 0.4rem;
+}
