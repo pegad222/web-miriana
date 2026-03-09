@@ -3,10 +3,10 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getArticleBySlug, readableDate } from "@/lib/articles";
 
-type BlogPageProps = { params: Promise<{ slug: string }> };
+type BlogPageProps = { params: { slug: string } };
 
 export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
-  const { slug } = await params;
+  const { slug } = params;
   const article = await getArticleBySlug(slug);
 
   if (!article) {
@@ -27,14 +27,14 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
 }
 
 export default async function ArticlePage({ params }: BlogPageProps) {
-  const { slug } = await params;
+  const { slug } = params;
   const article = await getArticleBySlug(slug);
 
   if (!article) {
     notFound();
   }
 
-  const paragraphs = article.content.split(/\n+/);
+  const paragraphs = article.content.split(/\n+/).map((paragraph) => paragraph.trim()).filter(Boolean);
 
   return (
     <article className="space-y-10">
@@ -53,8 +53,8 @@ export default async function ArticlePage({ params }: BlogPageProps) {
         />
       </div>
       <div className="prose prose-lg max-w-none text-ink">
-        {paragraphs.map((paragraph) => (
-          <p key={paragraph} className="text-lg text-muted-ink">
+        {paragraphs.map((paragraph, index) => (
+          <p key={`${index}-${paragraph.slice(0, 20)}`} className="text-lg text-muted-ink">
             {paragraph}
           </p>
         ))}
