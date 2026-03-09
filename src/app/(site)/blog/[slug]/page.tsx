@@ -52,7 +52,7 @@ export default async function ArticlePage({ params }: BlogPageProps) {
           className="h-[420px] w-full object-cover"
         />
       </div>
-      <div className="prose prose-lg max-w-none text-ink prose-strong:text-ink prose-li:marker:text-burgundy">
+      <div className="prose prose-lg max-w-none text-ink prose-strong:text-ink prose-li:marker:text-burgundy prose-p:whitespace-pre-line">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{article.content}</ReactMarkdown>
       </div>
     </article>
