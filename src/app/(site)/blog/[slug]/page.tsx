@@ -3,10 +3,10 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getArticleBySlug, readableDate } from "@/lib/articles";
 
-type BlogPageProps = { params: { slug: string } };
+type BlogPageProps = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
-  const { slug } = params;
+  const { slug } = await params;
   const article = await getArticleBySlug(slug);
 
   if (!article) {
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
 }
 
 export default async function ArticlePage({ params }: BlogPageProps) {
-  const { slug } = params;
+  const { slug } = await params;
   const article = await getArticleBySlug(slug);
 
   if (!article) {
