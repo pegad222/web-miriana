@@ -3,7 +3,6 @@
 import { revalidatePath } from "next/cache";
 import { Resend } from "resend";
 import { contactFormSchema } from "@/lib/schemas";
-import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 
 export type ContactFormState = {
   ok: boolean;
@@ -12,7 +11,13 @@ export type ContactFormState = {
 
 const resendApiKey = process.env.RESEND_API_KEY;
 const resendClient = resendApiKey ? new Resend(resendApiKey) : null;
-const NOTIFY_EMAIL = "info@mirianapetrovic.com";
+const defaultNotifyEmail = "info@mirianapetrovic.com";
+const resendFromEmail = process.env.RESEND_FROM_EMAIL ?? "onboarding@resend.dev";
+const resendFromName = process.env.RESEND_FROM_NAME ?? "Miriana Web";
+const resendToEmails = (process.env.RESEND_TO_EMAILS ?? defaultNotifyEmail)
+  .split(",")
+  .map((email) => email.trim())
+  .filter(Boolean);
 
 export async function submitContact(_: ContactFormState, formData: FormData): Promise<ContactFormState> {
   const result = contactFormSchema.safeParse({
@@ -30,29 +35,13 @@ export async function submitContact(_: ContactFormState, formData: FormData): Pr
   }
 
   try {
-    const supabase = createSupabaseAdminClient();
-    const { error } = await supabase.from("leads").insert({
-      id: crypto.randomUUID(),
-      full_name: result.data.fullName,
-      email: result.data.email,
-      phone: result.data.phone,
-      conflict_type: result.data.conflictType,
-      summary: result.data.summary,
-      is_escalating: result.data.isEscalating === "si",
-    });
-
-    if (error) {
-      console.error(error.message);
-      return { ok: false, error: { form: ["No se pudo registrar la solicitud"] } };
-    }
-
     await notifyByEmail(result.data);
 
     revalidatePath("/contacto");
     return { ok: true };
   } catch (error) {
     console.error(error);
-    return { ok: false, error: { form: ["Configura Supabase antes de enviar el formulario"] } };
+    return { ok: false, error: { form: ["No se pudo enviar el formulario. Intenta de nuevo más tarde."] } };
   }
 }
 
@@ -65,8 +54,7 @@ async function notifyByEmail(data: {
   isEscalating: string;
 }) {
   if (!resendClient) {
-    console.warn("RESEND_API_KEY no configurada. No se enviará email de aviso.");
-    return;
+    throw new Error("RESEND_API_KEY no configurada. No se enviará email de aviso.");
   }
 
   const subject = `Nueva solicitud de preselección - ${data.fullName}`;
@@ -91,16 +79,19 @@ Tipo de conflicto: ${data.conflictType}
 ¿Escalando?: ${data.isEscalating === "si" ? "Sí" : "No"}
 Resumen: ${data.summary}`;
 
-  try {
-    await resendClient.emails.send({
-      from: "Miriana Web <noreply@mirianapetrovic.com>",
-      to: [NOTIFY_EMAIL],
-      replyTo: data.email,
-      subject,
-      html,
-      text,
-    });
-  } catch (error) {
-    console.error("Error enviando email de preselección", error);
+  const response = await resendClient.emails.send({
+    from: `${resendFromName} <${resendFromEmail}>`,
+    to: resendToEmails,
+    replyTo: data.email,
+    subject,
+    html,
+    text,
+  });
+
+  if (response.error) {
+    console.error("Error enviando email de preselección", response.error);
+    throw new Error(response.error.message ?? "Error desconocido enviando email");
   }
+
+  console.log("Email de preselección enviado", response.data?.id);
 }
